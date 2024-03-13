@@ -20,9 +20,7 @@ class SiteController extends Controller
     }
     public function handleContact(Request $request)
     {
-        var_dump($_POST);
         $body = $request->getBody();
-        var_dump($body);
         return "doing stuff";
     }
 }
