@@ -33,14 +33,19 @@ class Application
             $primaryKey = $this->userClass::primaryKey();
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
         } else {
-            $this->user = null; 
+            $this->user = null;
         }
+    }
+
+    public static function isGuest(): bool
+    {
+        return !self::$app->user;
     }
 
     public function run()
     {
         echo $this->router->resolve();
-    } 
+    }
 
     public function setController(Controller $controller)
     {
