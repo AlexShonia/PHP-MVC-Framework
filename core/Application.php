@@ -6,14 +6,16 @@ namespace app\core;
 
 class Application
 {
-    public string $userClass;
     public static string $ROOT_DIR;
+
+    public string $layout = 'main';
+    public string $userClass;
     public Router $router;
     public Request $request;
     public Response $response;
     public Session $session;
     public static Application $app;
-    public Controller $controller;
+    public ?Controller $controller = null;
     public Database $db;
     public ?DbModel $user;
     public function __construct($rootPath, array $config)
@@ -44,7 +46,12 @@ class Application
 
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (\Exception $e) {
+            $this->response->setStatusCode($e->getCode());
+            echo $this->router->renderView('_error', ['exception' => $e]);
+        }
     }
 
     public function setController(Controller $controller)

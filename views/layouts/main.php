@@ -53,6 +53,9 @@ use app\core\Application;
                                 <?php echo Application::$app->user->getDisplayName() ?> (Logout)
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
                     </ul>
                 <?php endif ?>
             </div>

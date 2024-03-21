@@ -2,7 +2,7 @@
 /** @var $model \app\models\LoginForm */
 ?>
 
-<h1>Create an account</h1>
+<h1>Login</h1>
 <?php $form = \app\core\form\Form::begin('', "post") ?>
 <?php echo $form->field($model, 'email') ?>
 <?php echo $form->field($model, 'password')->passwordField() ?>
