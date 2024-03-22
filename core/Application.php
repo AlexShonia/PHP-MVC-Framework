@@ -2,6 +2,9 @@
 
 namespace app\core;
 
+use app\core\db\Database;
+use app\core\db\DbModel;
+
 // @package app\core
 
 class Application
@@ -17,7 +20,7 @@ class Application
     public static Application $app;
     public ?Controller $controller = null;
     public Database $db;
-    public ?DbModel $user;
+    public ?UserModel $user;
     public View $view;
     public function __construct($rootPath, array $config)
     {
@@ -66,7 +69,7 @@ class Application
         return $this->controller;
     }
 
-    public function login(DbModel $user)
+    public function login(UserModel $user)
     {
         $this->user = $user;
         $primaryKey = $user::primaryKey();
